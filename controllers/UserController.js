@@ -27,6 +27,7 @@ export const register = async (req, res) => {
 
         const token = jwt.sign({
             _id: user._id,
+            role: user.role,
         },
          "shoehut",
          {
@@ -67,6 +68,7 @@ export const login = async (req, res) => {
 
         const token = jwt.sign({
             _id: user._id,
+            role: user.role,
         },
          "shoehut",
          {
@@ -118,8 +120,6 @@ export const updateMe = async (req, res) => {
         if(!errors.isEmpty()){
             return res.status(400).json(errors.array());
         }
-        console.log(req.userId);
-        console.log(req.body);
         await UserModel.updateOne(
             {
                 _id: req.userId,

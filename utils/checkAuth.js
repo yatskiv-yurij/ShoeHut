@@ -1,6 +1,7 @@
 import jwt from 'jsonwebtoken';
+import mongoose from 'mongoose';
 
-export default (req, res, next) =>{
+export const userAuth =  (req, res, next) =>{
     const token = (req.headers.authorization ||  '').replace(/Bearer\s?/, '');
 
     if(token) {
@@ -19,5 +20,28 @@ export default (req, res, next) =>{
             message: 'Немає доступу',
         });
     }
+}
 
+export const adminAuth = async (req, res, next) => {
+    const token = (req.headers.authorization ||  '').replace(/Bearer\s?/, '');
+    if(token) {
+        try {
+            const decoded = jwt.verify(token, 'shoehut'); 
+            if(decoded.role === "admin"){
+                next();
+            }else{
+                return res.status(403).json({
+                    message: 'Немає доступу',
+                }); 
+            }
+        } catch (e) {
+            return res.status(403).json({
+                message: 'Немає доступу',
+            });
+        }
+    }else{
+        return res.status(403).json({
+            message: 'Немає доступу',
+        });
+    }
 }

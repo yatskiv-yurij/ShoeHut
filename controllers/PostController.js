@@ -2,7 +2,7 @@ import { validationResult } from 'express-validator';
 
 import PostModel from '../models/Post.js';
 
-export const create = async (req, res) => {
+export const createPost = async (req, res) => {
     try {
         const errors = validationResult(req);
         if(!errors.isEmpty()){
@@ -35,6 +35,18 @@ export const create = async (req, res) => {
         console.log(err);
         res.status(500).json({
             message: 'Не вдалося створити товар',
+        })
+    }
+}
+
+export const getAllPosts = async (req, res) => {
+    try {
+        const  posts = await PostModel.find();
+        res.json(posts);
+    } catch (err) {
+        console.log(err);
+        res.status(500).json({
+            message: 'Не вдалося отримати товари',
         })
     }
 }

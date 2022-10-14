@@ -35,7 +35,7 @@ export const createPost = async (req, res) => {
         console.log(err);
         res.status(500).json({
             message: 'Не вдалося створити товар',
-        })
+        });
     }
 }
 
@@ -47,6 +47,18 @@ export const getAllPosts = async (req, res) => {
         console.log(err);
         res.status(500).json({
             message: 'Не вдалося отримати товари',
+        });
+    }
+}
+
+export const getOnePost = async (req, res) => {
+    try {
+        const postId = req.params.id;
+        const post = await PostModel.findOne({
+            _id: postId,
         })
+        res.json(post);
+    } catch (err) {
+        
     }
 }

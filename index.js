@@ -6,7 +6,7 @@ import { loginValidation, registerValidation, updateValidation } from './validat
 import { postCreateValidation } from './validations/post.js';
 import {userAuth, adminAuth} from './utils/checkAuth.js';
 import {register, login, getMe, updateMe} from './controllers/UserController.js'
-import {createPost, getAllPosts, getOnePost} from './controllers/PostController.js'
+import {createPost, getAllPosts, getOnePost, updatePost, deletePost} from './controllers/PostController.js'
 mongoose.connect(
     'mongodb+srv://yatskiv:shoehut@cluster0.qyrveaz.mongodb.net/shoehut?retryWrites=true&w=majority')
     .then(() => console.log("DB connect"))
@@ -24,8 +24,8 @@ app.patch('/auth/update', userAuth, updateValidation, updateMe);
 app.post('/posts', adminAuth, postCreateValidation, createPost);
 app.get('/posts', getAllPosts);
 app.get('/posts/:id', getOnePost);
-app.delete('/posts/:id');
-app.patch('posts/:id');
+app.patch('/posts/:id', adminAuth, postCreateValidation, updatePost);
+app.delete('/posts/:id', adminAuth, deletePost);
 
 app.listen(4000, (err) => {
     if (err) {

@@ -123,7 +123,7 @@ export const deletePost = async (req, res) => {
     } catch (err) {
         console.log(err);
         res.status(500).json({
-            message: 'Не вдалося оновити дані товару',
+            message: 'Не вдалося видалити дані товару',
         });
     }
 }

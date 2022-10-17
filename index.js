@@ -7,6 +7,8 @@ import { postCreateValidation } from './validations/post.js';
 import {userAuth, adminAuth} from './utils/checkAuth.js';
 import {register, login, getMe, updateMe} from './controllers/UserController.js'
 import {createPost, getAllPosts, getOnePost, updatePost, deletePost} from './controllers/PostController.js'
+import {createOrder} from './controllers/OrderController.js'
+
 mongoose.connect(
     'mongodb+srv://yatskiv:shoehut@cluster0.qyrveaz.mongodb.net/shoehut?retryWrites=true&w=majority')
     .then(() => console.log("DB connect"))
@@ -27,11 +29,13 @@ app.get('/posts/:id', getOnePost);
 app.patch('/posts/:id', adminAuth, postCreateValidation, updatePost);
 app.delete('/posts/:id', adminAuth, deletePost);
 
+
+app.post('/order', userAuth, createOrder);
+
 app.listen(4000, (err) => {
     if (err) {
         return console.log(err)
     }
-
     console.log('Server start');
 });
 

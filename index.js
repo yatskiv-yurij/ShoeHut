@@ -1,5 +1,6 @@
 import express  from 'express';
 import mongoose from 'mongoose'
+import multer from 'multer';
 
 
 import { loginValidation, registerValidation, updateValidation } from './validations/auth.js';
@@ -7,6 +8,8 @@ import { postCreateValidation } from './validations/post.js';
 import { commentCreateValidation } from './validations/comment.js';
 
 import {userAuth, adminAuth} from './utils/checkAuth.js';
+import { storage, saveImages } from './utils/multer.js';
+
 
 import {register, login, getMe, updateMe} from './controllers/UserController.js';
 import {createPost, getAllPosts, getOnePost, updatePost, deletePost} from './controllers/PostController.js';
@@ -19,6 +22,8 @@ mongoose.connect(
     .catch((err) => console.log("DB error: ", err));
 
 const app = express();
+
+const upload = multer({storage});    
 
 app.use(express.json());
 
@@ -41,6 +46,9 @@ app.patch('/order/:id', adminAuth, updateStatusOrder);
 
 app.post('/comment/:id', userAuth, commentCreateValidation, createComment);
 app.get('/comment/:id', getProductComment);
+
+app.post('/upload', adminAuth, upload.any(), saveImages);
+
 
 app.listen(4000, (err) => {
     if (err) {

@@ -22,7 +22,7 @@ export const createPost = async (req, res) => {
             material_sole: req.body.material_sole,
             season: req.body.season,
             country: req.body.country,
-            images: req.body.images,
+            images: req.images,
             sizes: req.body.sizes,
         });
 

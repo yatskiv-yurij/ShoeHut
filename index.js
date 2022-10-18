@@ -4,10 +4,14 @@ import mongoose from 'mongoose'
 
 import { loginValidation, registerValidation, updateValidation } from './validations/auth.js';
 import { postCreateValidation } from './validations/post.js';
+import { commentCreateValidation } from './validations/comment.js';
+
 import {userAuth, adminAuth} from './utils/checkAuth.js';
-import {register, login, getMe, updateMe} from './controllers/UserController.js'
-import {createPost, getAllPosts, getOnePost, updatePost, deletePost} from './controllers/PostController.js'
-import {createOrder, getAllOrder, getClientOrder, updateStatusOrder} from './controllers/OrderController.js'
+
+import {register, login, getMe, updateMe} from './controllers/UserController.js';
+import {createPost, getAllPosts, getOnePost, updatePost, deletePost} from './controllers/PostController.js';
+import {createOrder, getAllOrder, getClientOrder, updateStatusOrder} from './controllers/OrderController.js';
+import {createComment, getProductComment} from './controllers/CommentController.js';
 
 mongoose.connect(
     'mongodb+srv://yatskiv:shoehut@cluster0.qyrveaz.mongodb.net/shoehut?retryWrites=true&w=majority')
@@ -34,6 +38,9 @@ app.post('/order', userAuth, createOrder);
 app.get('/order', adminAuth, getAllOrder);
 app.get('/order/me', userAuth, getClientOrder);
 app.patch('/order/:id', adminAuth, updateStatusOrder);
+
+app.post('/comment/:id', userAuth, commentCreateValidation, createComment);
+app.get('/comment/:id', getProductComment);
 
 app.listen(4000, (err) => {
     if (err) {

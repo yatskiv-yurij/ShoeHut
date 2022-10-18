@@ -7,7 +7,7 @@ import { postCreateValidation } from './validations/post.js';
 import {userAuth, adminAuth} from './utils/checkAuth.js';
 import {register, login, getMe, updateMe} from './controllers/UserController.js'
 import {createPost, getAllPosts, getOnePost, updatePost, deletePost} from './controllers/PostController.js'
-import {createOrder, getAllOrder,getClientOrder} from './controllers/OrderController.js'
+import {createOrder, getAllOrder, getClientOrder, updateStatusOrder} from './controllers/OrderController.js'
 
 mongoose.connect(
     'mongodb+srv://yatskiv:shoehut@cluster0.qyrveaz.mongodb.net/shoehut?retryWrites=true&w=majority')
@@ -33,6 +33,7 @@ app.delete('/posts/:id', adminAuth, deletePost);
 app.post('/order', userAuth, createOrder);
 app.get('/order', adminAuth, getAllOrder);
 app.get('/order/me', userAuth, getClientOrder);
+app.patch('/order/:id', adminAuth, updateStatusOrder);
 
 app.listen(4000, (err) => {
     if (err) {

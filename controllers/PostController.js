@@ -24,6 +24,9 @@ export const createPost = async (req, res) => {
             country: req.body.country,
             images: req.images,
             sizes: req.body.sizes,
+            discount: req.body.discount,
+            new_price: req.body.new_price,
+            popular: req.body.popular,
         });
 
         const post = await doc.save();

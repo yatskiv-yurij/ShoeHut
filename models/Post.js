@@ -56,7 +56,17 @@ const PostSchema = new mongoose.Schema({
     sizes: {
         type: Array,
         default: [],
-    }    
+    },
+    discount: {
+        type: Boolean,
+        required: true,
+    },
+    new_price: {
+        type: String,
+    },
+    popular: {
+        type: Number,
+    }
     },
     {
         timestamps: true,

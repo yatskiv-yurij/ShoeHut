@@ -18,4 +18,6 @@ export const postCreateValidation = [
     body('season', 'Вкажіть сезон').isLength({ min: 1}),
     body('country', 'Вкажіть країну виробник').isLength({ min: 1}),
 
+    body('price', 'Вкажіть вірний формат ціни').optional().isNumeric(),
+
 ]

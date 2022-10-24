@@ -7,9 +7,8 @@ import { loginValidation, registerValidation, updateValidation } from './validat
 import { postCreateValidation } from './validations/post.js';
 import { commentCreateValidation } from './validations/comment.js';
 
-import {userAuth, adminAuth} from './utils/checkAuth.js';
-import { storage, saveImages } from './utils/multer.js';
-
+import { userAuth, adminAuth } from './utils/checkAuth.js';
+import { storage, saveImages, deleteImages } from './utils/images.js';
 
 import {register, login, getMe, updateMe} from './controllers/UserController.js';
 import {createPost, getAllPosts, getOnePost, updatePost, deletePost} from './controllers/PostController.js';
@@ -48,7 +47,7 @@ app.post('/comment/:id', userAuth, commentCreateValidation, createComment);
 app.get('/comment/:id', getProductComment);
 
 app.post('/upload', adminAuth, upload.any(), saveImages);
-
+app.delete('/upload', adminAuth, deleteImages)
 
 app.listen(4000, (err) => {
     if (err) {

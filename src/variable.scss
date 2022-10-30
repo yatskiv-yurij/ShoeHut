@@ -1,0 +1,40 @@
+$black: #000;
+$white: #fff;
+$gray: #3B413C;
+$green: #94D1BE;
+$light-gray: #9DB5B2;
+$light-green: #DAF0EE;
+
+@mixin text($size, $weight, $height) {
+    font-size: $size;
+    font-weight: $weight;
+    line-height: $height;
+}
+
+@mixin title(){
+    @include text(60px, 700, 90px);
+}
+
+@mixin title2(){
+    @include text(32px, 500, 54px);
+    margin: 0;
+}
+
+@mixin simpleText(){
+    @include text(20px, 400, 33px);
+    margin: 0;
+}
+
+@mixin button(){
+    display: inline-block;
+    background-color: $gray;
+    border-radius: 10px;
+    border: 1px solid $light-gray;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: $white;
+    @include text(20px, 400, 33px);
+    padding: 15px 0;
+    width: 50%;
+    text-align: center;
+}

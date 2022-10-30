@@ -1,0 +1,18 @@
+.swiper{
+    &-slide{
+        background-color: #fff;
+        display: block;
+        border-radius: 10px;
+        Link{
+            display:flex !important;
+        }
+    
+        .product{
+            &__img{
+                width: 100%;
+            }
+        }
+    }
+
+}
+

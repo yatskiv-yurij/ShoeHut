@@ -1,0 +1,123 @@
+@import '../../variable.scss';
+
+.header{
+    position: relative;
+    background: linear-gradient(90deg, rgba(59,65,60,1) 50%, rgba(148,209,190,1) 50%);
+
+    &__wrapper{
+        height: calc(100vh - 75px);
+        color: $white;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    &__content{
+        width: 40%;
+    }
+
+    &__title{
+        @include title();
+        margin: 0;
+    }
+
+    &__text{
+        @include text(28px, 400, 48px);
+        margin: 50px 0;
+    }
+
+    &__img{
+        position: absolute;
+        width: 45%;
+        right: 3%;
+        height: auto;
+    }
+
+    &__shop{
+        @include button();
+    }
+}
+
+.popular{
+    padding: 100px 0;
+
+    &__products{
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        gap: 20px 0;
+        margin-top: 50px;
+    }
+
+    .product{
+        width: 18%;
+    }
+}
+
+.sale{
+    background-color: $gray;
+    padding: 100px 0 140px 0;
+
+    &__title{
+        color: $white;
+    }
+
+    &__wrapper{
+        position: relative;
+        width: calc(100% - 180px);
+        margin: 50px auto 0 auto;
+    }
+}
+
+.location{
+    padding: 100px 0;
+
+    &__wrapper{
+        margin-top: 50px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    &__content{
+        width: 45%;
+    }
+
+    &__subtitle{
+        @include text(28px, 400, 42px);
+        margin: 0;
+    }
+
+    &__address, &__text{
+        @include simpleText();
+        margin-top: 20px;
+    }
+
+    .schedule{
+        list-style: none;
+        margin-top: 0;
+        &__item{
+            @include text(18px, 400, 28px);
+            margin-bottom: 10px;
+        }
+    }
+}
+
+.mapouter{
+    position:relative;
+    text-align:right;
+    width:50%;
+    height:400px;
+    border-radius: 10px;
+}
+.gmap_canvas {
+    overflow:hidden;
+    background:none;
+    width:100%;
+    height:400px;
+}
+.gmap_iframe {
+    height:400px;
+    border-radius: 10px;
+}
+

@@ -1,0 +1,96 @@
+@import '../../variable.scss';
+
+.footer{
+    background-color: $gray;
+    padding: 100px 0;
+    &__wrapper{ 
+        display: flex;
+        justify-content: space-between;
+
+    }
+
+    &__social{
+        margin: 40px 0;
+        display: flex;
+        align-items: center;
+        
+        a + a {
+            margin-left: 20px;
+        }
+
+        svg{
+            width: 40px;
+            height: auto;
+        }
+    }
+
+    &__card{
+        display: flex;
+        align-items: center;
+
+        a + a {
+            margin-left: 20px;
+        }
+        svg{
+            width: 80px;
+            height: auto;
+        }
+    }
+
+    &__text{
+        color: $white;
+        @include text(24px, 400, 42px);
+        margin: 0;
+    }
+
+    &__menu{
+        list-style: none;
+        margin: 15px 0 0 0;
+        padding: 0;
+
+        &_item{
+            margin-bottom: 5px;
+        }
+
+        &_link{
+            color: $light-gray;
+            text-decoration: none;
+            @include text(18px, 400, 33px);
+
+            &:hover{
+                color: $white;
+            }
+        }
+    }
+
+    &__phone{
+        text-decoration: none;
+        color: $white;
+        @include text(22px, 400, 48px);
+    }
+
+    &__address{
+        margin-top: 20px;
+        display: flex;
+        align-items: flex-start;
+
+        svg{
+            padding-top: 5px;
+            width: 30px;
+            height: 30px;
+        }
+
+        p{
+            margin: 0;
+            color: $white;
+            @include simpleText();
+        }
+    }
+
+    &__copyright{
+        margin-top: 50px;
+        margin-bottom: 0;
+        color: $white;
+        @include text(16px, 400, 27px);
+    }
+}

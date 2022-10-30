@@ -1,0 +1,68 @@
+@import '../../variable.scss';
+
+.product{
+    background-color: #fff;
+    padding: 10px;
+    border-radius: 10px;
+    text-align: center;
+    text-decoration: none;
+    color: #000;
+    position: relative;
+
+    &:hover .heart{
+        display: block;
+    }
+
+    &__img{
+        width: 100%;
+        height: auto;
+        border-radius: 10px;
+    }
+
+    &__data{
+        text-decoration: none;
+        color: #000;
+    }
+
+    .heart{
+        display: none;
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        cursor: pointer;
+    }
+
+    &__name{
+        @include simpleText();
+        margin-top: 15px;
+    }
+    &__brand{
+        @include simpleText();
+        margin-top: 3px;
+    }
+
+    &__prices{
+        display: flex;
+        align-items: center;
+    }
+
+    &__new-price{
+        @include simpleText();
+        margin-top: 10px;
+        font-weight: 500;
+
+        span{
+            color: #A51111;
+            margin-right: 3px;
+        }
+    }
+
+    &__old-price{
+        color: #4C4E4A;
+        @include text(18px, 500, 27px);
+        margin: 0;
+        margin-top: 10px;
+        margin-left: 20px;
+        text-decoration: line-through #4C4E4A 2px;
+    }
+}

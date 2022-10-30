@@ -25,6 +25,7 @@ const app = express();
 const upload = multer({storage});    
 
 app.use(express.json());
+app.use('/uploads', express.static('uploads'));
 
 app.post('/auth/register', registerValidation, register);
 app.post('/auth/login', loginValidation, login);

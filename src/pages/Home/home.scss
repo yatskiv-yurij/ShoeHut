@@ -1,43 +1,5 @@
 @import '../../variable.scss';
 
-.header{
-    position: relative;
-    background: linear-gradient(90deg, rgba(59,65,60,1) 50%, rgba(148,209,190,1) 50%);
-
-    &__wrapper{
-        height: calc(100vh - 75px);
-        color: $white;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-    }
-
-    &__content{
-        width: 40%;
-    }
-
-    &__title{
-        @include title();
-        margin: 0;
-    }
-
-    &__text{
-        @include text(28px, 400, 48px);
-        margin: 50px 0;
-    }
-
-    &__img{
-        position: absolute;
-        width: 45%;
-        right: 3%;
-        height: auto;
-    }
-
-    &__shop{
-        @include button();
-    }
-}
-
 .popular{
     padding: 100px 0;
 

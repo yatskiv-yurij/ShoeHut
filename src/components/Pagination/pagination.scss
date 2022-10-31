@@ -1,0 +1,38 @@
+@import '../../variable.scss';
+.pagination{
+    list-style: none;
+    padding: 0;
+    display: flex;
+    justify-content: space-between;
+    width: 40%;
+    margin: 50px auto;
+
+    &__page,&__break{
+        padding: 6px 15px;
+        border: 1px solid $gray;
+        border-radius: 10px;
+        @include simpleText();
+    }
+
+    &__page, &__break, &__prev, &__next{
+        cursor:pointer;
+    }
+
+    &__prev, &__next{
+        position: relative;
+    }
+
+    &__next::after{
+        position: absolute;
+        transform: translateY(25%);
+        content: url('data:image/svg+xml; utf8, <svg width="12" height="20" viewBox="0 0 12 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1.48335 16.4666L7.95002 9.99997L1.48335 3.5333C0.83335 2.8833 0.83335 1.8333 1.48335 1.1833C2.13335 0.533301 3.18335 0.533301 3.83335 1.1833L11.4833 8.8333C12.1334 9.4833 12.1334 10.5333 11.4833 11.1833L3.83335 18.8333C3.18335 19.4833 2.13335 19.4833 1.48335 18.8333C0.850016 18.1833 0.83335 17.1166 1.48335 16.4666Z" fill="black"/></svg>');
+    } 
+    &__prev::after{
+        position: absolute;
+        left: -10px;
+        transform: translateY(25%);
+        content: url('data:image/svg+xml; utf8, <svg width="12" height="20" viewBox="0 0 12 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M10.5167 3.53337L4.04998 10L10.5167 16.4667C11.1667 17.1167 11.1667 18.1667 10.5167 18.8167C9.86665 19.4667 8.81665 19.4667 8.16665 18.8167L0.51665 11.1667C-0.13335 10.5167 -0.13335 9.4667 0.51665 8.8167L8.16665 1.1667C8.81665 0.516702 9.86665 0.516702 10.5167 1.1667C11.15 1.8167 11.1667 2.88337 10.5167 3.53337Z" fill="black"/></svg>');
+
+    }
+
+}

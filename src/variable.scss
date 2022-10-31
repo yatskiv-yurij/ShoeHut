@@ -4,6 +4,7 @@ $gray: #3B413C;
 $green: #94D1BE;
 $light-gray: #9DB5B2;
 $light-green: #DAF0EE;
+$red: #A51111;
 
 @mixin text($size, $weight, $height) {
     font-size: $size;
@@ -37,4 +38,9 @@ $light-green: #DAF0EE;
     padding: 15px 0;
     width: 50%;
     text-align: center;
+    cursor: pointer;
+
+    &:hover{
+        background-color: darken($gray, 10%);
+    }
 }

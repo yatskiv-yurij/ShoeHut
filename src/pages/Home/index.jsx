@@ -1,11 +1,10 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-
-
 import './home.scss';
 import header_img from '../../image/header-main.png';
-import { Nav, Footer, Product, Sale} from '../../components/';
+import { Nav, Footer, Product, ProductSlider} from '../../components/';
+
 export const Home = () => {
     return (
         <>
@@ -15,7 +14,7 @@ export const Home = () => {
                     <div className="header__wrapper">
                         <div className="header__content">
                             <h1 className="header__title title">Життя краще в комфортному взутті</h1>
-                            <p className="header__text">Купляй брендове взуття нової колекці саме в нашому магазині</p>
+                            <p className="header__text">Купляй брендове взуття нової колекції саме в нашому магазині</p>
                             <Link className="header__shop" to={'/shop'}>ЗА ПОКУПКАМИ</Link>
                         </div>
                         <img src={header_img} alt="header" className="header__img"/>
@@ -43,7 +42,7 @@ export const Home = () => {
                 <div className="container">
                     <h3 className="sale__title title2">Розпродаж</h3>
                     <div className="sale__wrapper">
-                        <Sale />
+                        <ProductSlider />
                     </div>
                 </div>
             </div>

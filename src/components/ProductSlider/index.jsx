@@ -8,9 +8,8 @@ import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/scrollbar';
 
-import './sale.scss';
 
-export const Sale = () => {
+export const ProductSlider = () => {
     return (
         <Swiper
             modules={[Navigation, Scrollbar]}

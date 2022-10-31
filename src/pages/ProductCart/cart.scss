@@ -1,0 +1,220 @@
+@import '../../variable.scss';
+
+.cart{
+    background-color: $green;
+    padding: 100px 0;
+
+    &__wrapper{
+        display: flex;
+        justify-content: space-between;
+    }
+
+    &__photos{
+        display: flex;
+        justify-content: space-between;
+        width: 55%;
+    }
+    &__vertical-photos{
+        width: 120px;
+        .swiper{
+            height: 700px;
+    
+            &-slide{
+                width: 120px;
+            }
+        }
+        .cart__img{
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+        }
+    }
+
+    &__main-photo{
+        width: calc(100% - 120px);
+        margin-left: 30px;
+
+
+        .cart__img{
+            border-radius: 10px;
+            width: 100%;
+            height: auto;
+        }
+
+
+        .swiper{
+            &-button{ 
+                &-prev, &-next{
+                    width: 54px;
+                    height: 54px;
+                    background: $green;
+                    position: absolute;
+                    border-radius: 100%;
+                    &::after{
+                        content: url('data:image/svg+xml; utf8, <svg width="16" height="30" viewBox="0 0 16 30" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1.84961 28.1998L12.7163 17.3331C13.9996 16.0498 13.9996 13.9498 12.7163 12.6665L1.84961 1.7998" stroke="white" stroke-width="3" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/></svg>');
+                        position: relative;
+                    }
+                }
+    
+                &-prev{
+                    &::after{
+                        transform: rotate(180deg);
+                        left: -2px;
+                        top: 2px;
+                    }
+                }
+    
+                &-next{
+                    &::after{
+                        right: -2px;
+                    }
+                }
+            }
+        }
+    }
+
+    &__data{
+        width: 45%;
+        margin-left: 100px;
+        margin-top: 100px;
+    }
+
+    &__brand, &__text{
+        margin-top: 10px;
+        @include simpleText();
+    }
+
+    &__prices{
+        margin-top: 10px;
+        display: flex;
+        align-items: center;
+    }
+
+    &__new-price{
+        margin: 0;
+        font-weight: 500;
+        span{
+            color: #A51111;
+        }
+    }
+
+    &__old-price{
+        color: #4C4E4A;
+        @include simpleText();
+        margin: 0;
+        margin-left: 20px;
+        text-decoration: line-through #4C4E4A 2px;
+    }
+    
+    &__sizes{
+        margin-top: 10px;
+        display: flex;
+        align-items: flex-start;
+    }
+
+    &__radio{
+        display: none;
+
+        &:checked + label{
+            background-color: $light-green;
+        }
+    }
+
+    &__size{
+        @include simpleText(); 
+        padding: 6px 12px;
+        border: 1px solid $gray;
+        border-radius: 10px;
+        margin-right: 10px;
+        cursor: pointer;
+    }
+
+    &__basket{
+        margin-top: 30px;
+        @include button();
+        width: 100%;
+    }
+   
+}
+
+.description{
+    padding: 100px 0;
+
+    &__text{
+        @include simpleText();
+        margin-top: 50px;  
+    }
+}
+
+.detail{
+    padding: 0 0 100px;
+
+    &__wrapper{
+        margin-top: 50px;
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        row-gap: 20px;
+    }
+
+    &__item{
+        width: 46%;
+        display: flex;
+        justify-content: space-between;
+        padding: 10px;
+        border-bottom: 1px dashed $gray;
+        
+        p{
+            @include  simpleText();
+        }
+    }
+}
+
+.review{
+    padding: 100px 0;
+    background-color: $gray;
+    color: $white;
+
+    &__item{
+        padding: 10px;
+        border-bottom: 1px solid $white;
+
+        &+&{
+            margin-top: 50px;
+        }
+    }
+
+    &__user-name{
+        @include text(24px, 400, 36px);
+        margin: 0;
+    }
+
+    &__stars{
+        margin-top: 10px;
+        svg{
+            margin-right: 5px;
+        }
+    }
+    
+    &__text{
+        @include simpleText();
+        margin-top: 10px;
+    }
+
+    &__date{
+        @include text(18px, 400, 36px);
+        margin-top: 25px;
+    }
+
+    &__more{
+        @include button();
+        margin: 50px auto 0 auto;
+        width: 30%;
+        position: relative;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+}
+.recommend{
+    padding: 100px 0;
+}

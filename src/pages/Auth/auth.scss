@@ -1,0 +1,95 @@
+@import  '../../variable.scss';
+
+.auth{
+    .login, .registration{
+        padding: 0 75px;
+        width: 50%;
+        text-align: center;
+
+        &__title{
+            font-weight: 400;
+        }
+
+        &__open{
+            @include button();
+            display: block;
+            margin: 0 auto;
+            margin-top: 50px;
+            width: 75%;
+        }
+
+        &__next{
+            @include button();
+            margin-top: 50px;
+            width: 75%;
+        }
+        
+        &__form{
+            margin-top: 50px;
+        }
+
+        &__item {
+            margin-top: 50px;
+            position: relative;
+
+            label{
+                position: absolute;
+                left: 5px;
+                top: 3px;
+
+                @include text(18px, 400, 33px);
+            }
+
+            &-flex{
+                display: flex;
+                justify-content: space-between;
+
+                div{
+                    position: relative;
+                    width: 45%;
+                }
+            }
+        }
+        
+        &__email, &__password, &__name, &__lastname{
+            width: 100%;
+            background-color: transparent;
+            border: none;
+            outline: none;
+            border-bottom: 1px solid #fff;
+            padding: 10px 5px;
+            color: $white;
+
+            &:focus ~ label, &:valid ~ label{
+                top: -20px;
+                @include text(14px, 400, 22px);
+            }
+
+        }
+    }
+
+    .login__form, .registration__form{
+        display: none;
+    }
+
+    &__check{
+        display: none;
+
+        &:not(:checked) ~ .login .login__form, &:checked ~.registration .registration__form{
+            display: block;
+        } 
+
+        &:not(:checked) ~ .login .login__open, &:checked ~ .registration .registration__open{
+            display: none;
+        }
+    }
+
+    .registration{
+        color: $gray;
+        &__email, &__password, &__name, &__lastname{
+            border-color: $gray;
+            color: $black;
+        }
+    }
+    
+}

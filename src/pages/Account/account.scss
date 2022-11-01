@@ -1,0 +1,124 @@
+@import  '../../variable.scss';
+
+.account{
+    background-color: $green;
+    &__wrapper{
+        display: flex;
+    }
+
+    &__menu{
+        padding: 200px 20px 0;
+    }
+
+    &__link{
+        display: block;
+        width: 100%;
+        @include simpleText();
+        margin-bottom: 20px;
+        cursor: pointer;
+
+        border:none;
+        outline: none;
+        background-color: transparent;
+        color: $white;
+        text-align: left;
+        padding: 0;
+    }
+
+    &__order-data, &__user-data{
+        display: none;
+    }
+
+    &__menu{
+        width: 20%;
+        background-color: $gray;
+    }
+
+    &__data{
+        width: 80%;
+        padding: 100px 0 100px 20px;
+    }
+
+    &__title{
+        color: $white;
+    }
+
+    hr{
+        background-color: $black; 
+        height: 0.5px; 
+        border: 0;
+        margin-top: 20px;
+    }
+
+    &__user{
+        margin-top: 50px;
+    }
+
+    &__item {
+        margin-top: 50px;
+        width: 70%;
+        position: relative;
+        label{
+            position: absolute;
+            left: 5px;
+            top: 3px;
+
+            @include text(18px, 400, 33px);
+        }
+
+        &-flex{
+            display: flex;
+            justify-content: space-between;
+
+            div{
+                position: relative;
+                width: 45%;
+            }
+        }
+
+        span{
+            position: absolute;
+            top: 10px;
+            left: 5px;
+        }
+    }
+
+    &__email, &__phone, &__name, &__lastname, &__old-pass, &__new-pass, &__repeat-pass{
+        width: 100%;
+        background-color: transparent;
+        border: none;
+        outline: none;
+        border-bottom: 1px solid $gray;
+        padding: 10px 5px;
+
+        &:focus ~ label, &:valid ~ label{
+            top: -20px;
+            @include text(14px, 400, 22px);
+        }   
+    }
+
+    &__phone {
+        padding-left: 50px;
+    
+        &~ label{
+            top: -20px;
+            @include text(14px, 400, 22px);
+        }
+    }
+
+    &__old-pass{
+        width: 45%;
+    }
+
+    &__subtitle{
+        color: $white;
+        @include text(24px, 500, 35px);
+        margin: 50px 0 0;
+    }
+
+    &__save{
+        @include button();
+        width: 32%;
+        margin-top: 50px;
+    }
+}

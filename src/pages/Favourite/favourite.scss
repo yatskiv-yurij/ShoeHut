@@ -1,0 +1,81 @@
+@import '../../variable.scss';
+
+.favourite{
+    padding: 100px 0;
+    background-color: $green;
+
+    &__products{
+        margin-top: 50px;
+    }
+
+    &__product{
+        display: flex;
+        padding-bottom: 30px;
+        border-bottom: 1px solid $white;
+        position: relative;
+        
+        & + &{
+            margin-top: 50px;
+        }
+
+        &-img{
+            width: 150px;
+            height: auto;
+            border-radius: 10px;
+        }
+
+        &-name{
+            text-decoration: none;
+            color: $black;
+        }
+
+        &-data{
+            margin-left: 30px;
+            text-decoration: none;
+            color: $black;
+        }
+
+        &-brand{
+            @include simpleText();
+            margin-top: 5px;
+        }
+
+        &-price{
+            @include text(24px, 400, 33px);
+            margin: 0;
+            margin-top: 10px;
+            span{
+                font-weight: 500;
+            }
+        }
+    }
+
+    
+    &__delete{
+        cursor: pointer;
+        background-color: transparent;
+        border: none;
+        outline: none;
+        padding: 0;
+
+        position: absolute;
+        top: 0;
+        right: 0;
+        svg{
+            width: 25px;
+            height: 25px;
+            path{
+                fill: lighten($red, 30%);
+            }
+        }
+
+        &:hover{
+            svg{
+                path{
+                    fill: lighten($red, 10%);
+                }
+            }
+        }
+    }
+
+}

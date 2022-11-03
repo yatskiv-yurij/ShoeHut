@@ -17,39 +17,11 @@
         & + &{
             margin-top: 50px;
         }
-
-        &-img{
-            width: 150px;
-            height: auto;
-            border-radius: 10px;
-        }
-
-        &-name{
-            text-decoration: none;
-            color: $black;
-        }
-
-        &-data{
-            margin-left: 30px;
-            text-decoration: none;
-            color: $black;
-        }
-
-        &-brand{
-            @include simpleText();
-            margin-top: 5px;
-        }
-
-        &-price{
-            @include text(24px, 400, 33px);
-            margin: 0;
-            margin-top: 10px;
-            span{
-                font-weight: 500;
-            }
-        }
     }
 
+    .product__img{
+        width: 150px;
+    }
     
     &__delete{
         cursor: pointer;

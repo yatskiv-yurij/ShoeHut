@@ -1,0 +1,96 @@
+@import '../../variable.scss';
+.editor{
+    background-color: $green;
+    padding: 20px 10px;
+    border: 1px solid $black;
+    border-radius: 10px;
+}
+
+.account{
+    &__label-file{
+        display: inline-block;
+        background-color: $gray;
+        border-radius: 10px;
+        border: 1px solid $light-gray;
+        text-transform: uppercase;
+        text-decoration: none;
+        color: $white;
+        font-size: 16px !important;
+        padding: 7px 0;
+        width: 35%;
+        text-align: center;
+        cursor: pointer;
+
+        &:hover{
+            background-color: darken($gray, 10%);
+        }
+    }
+    &__image{
+        display: none;
+    }
+
+    &__count-image{
+        @include simpleText();
+        margin-left: 20px;
+    }
+    &__product{
+
+        &-img{
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+
+            &-delete{
+                border: none;
+                outline: none;
+                border-radius: 10px;
+                width: 40px;
+                height: 40px;
+                background-color: #D92323;
+                margin: 10px auto 0;
+                position: relative;
+                cursor: pointer;
+
+                &:hover{
+                    background-color: darken(#D92323, 10%);
+                }
+
+                svg{
+                    position: absolute;
+                    top: 50%;
+                    left: 50%;
+                    transform: translate(-50%, -50%);
+                }
+            }
+        }
+    
+        &-create{
+            @include button();
+            width: 32%;
+            margin-top: 50px;
+        }
+
+        &-save, &-delete{
+            @include button();
+            width: 45%;
+        }
+
+        &-delete{
+            background-color: #D92323;
+
+            &:hover{
+                background-color: darken(#D92323, 10%);
+            }
+        }
+
+        
+    }
+
+    &__slider-photo{
+        width: calc(100% - 180px);
+        position: relative;
+        margin: 50px auto;
+    }
+
+
+}

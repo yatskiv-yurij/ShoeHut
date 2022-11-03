@@ -14,7 +14,7 @@ export const ProductCart = () => {
 
     const [firstSwiper, setFirstSwiper] = useState(null);
     const [secondSwiper, setSecondSwiper] = useState(null);
-
+    const [review, setReview] = useState(false);
     return (
         <>
             <Nav />
@@ -158,7 +158,48 @@ export const ProductCart = () => {
 
             <div className="review">
                 <div className="container">
-                    <div className="review__title title2">Відгуки</div>
+                    <div className="review__wrapper">
+                        <h3 className="review__title title2">Відгуки</h3>
+                        <label className="review__new-open" onClick={() => setReview(true)}>Додати відгук</label>
+                    </div>
+
+                    {review && <div className="review__new">
+                        <div className="rating">
+                            <input type="radio" name="rating" id="rating5" className="rating__radio" value="5"/>
+                            <label htmlFor="rating5" className="rating__star">
+                                <svg width="16" height="17" viewBox="0 0 16 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M10.43 6.00001L8.95996 1.16001C8.66996 0.21001 7.32996 0.21001 7.04996 1.16001L5.56996 6.00001H1.11996C0.149959 6.00001 -0.250041 7.25001 0.539959 7.81001L4.17996 10.41L2.74996 15.02C2.45996 15.95 3.53996 16.7 4.30996 16.11L7.99996 13.31L11.69 16.12C12.46 16.71 13.54 15.96 13.25 15.03L11.82 10.42L15.46 7.82001C16.25 7.25001 15.85 6.01001 14.88 6.01001H10.43V6.00001Z" fill="#ffffff"/>
+                                </svg>
+                            </label>
+                            <input type="radio" name="rating" id="rating4" className="rating__radio" value="4"/>
+                            <label htmlFor="rating4" className="rating__star">
+                                <svg width="16" height="17" viewBox="0 0 16 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M10.43 6.00001L8.95996 1.16001C8.66996 0.21001 7.32996 0.21001 7.04996 1.16001L5.56996 6.00001H1.11996C0.149959 6.00001 -0.250041 7.25001 0.539959 7.81001L4.17996 10.41L2.74996 15.02C2.45996 15.95 3.53996 16.7 4.30996 16.11L7.99996 13.31L11.69 16.12C12.46 16.71 13.54 15.96 13.25 15.03L11.82 10.42L15.46 7.82001C16.25 7.25001 15.85 6.01001 14.88 6.01001H10.43V6.00001Z" fill="#ffffff"/>
+                                </svg>
+                            </label>
+                            <input type="radio" name="rating" id="rating3" className="rating__radio" value="3"/>
+                            <label htmlFor="rating3" className="rating__star">
+                                <svg width="16" height="17" viewBox="0 0 16 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M10.43 6.00001L8.95996 1.16001C8.66996 0.21001 7.32996 0.21001 7.04996 1.16001L5.56996 6.00001H1.11996C0.149959 6.00001 -0.250041 7.25001 0.539959 7.81001L4.17996 10.41L2.74996 15.02C2.45996 15.95 3.53996 16.7 4.30996 16.11L7.99996 13.31L11.69 16.12C12.46 16.71 13.54 15.96 13.25 15.03L11.82 10.42L15.46 7.82001C16.25 7.25001 15.85 6.01001 14.88 6.01001H10.43V6.00001Z" fill="#ffffff"/>
+                                </svg>
+                            </label>
+                            <input type="radio" name="rating" id="rating2" className="rating__radio" value="2"/>
+                            <label htmlFor="rating2" className="rating__star">
+                                <svg width="16" height="17" viewBox="0 0 16 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M10.43 6.00001L8.95996 1.16001C8.66996 0.21001 7.32996 0.21001 7.04996 1.16001L5.56996 6.00001H1.11996C0.149959 6.00001 -0.250041 7.25001 0.539959 7.81001L4.17996 10.41L2.74996 15.02C2.45996 15.95 3.53996 16.7 4.30996 16.11L7.99996 13.31L11.69 16.12C12.46 16.71 13.54 15.96 13.25 15.03L11.82 10.42L15.46 7.82001C16.25 7.25001 15.85 6.01001 14.88 6.01001H10.43V6.00001Z" fill="#ffffff"/>
+                                </svg>
+                            </label>
+                            <input type="radio" name="rating" id="rating1" className="rating__radio" value="1"/>
+                            <label htmlFor="rating1" className="rating__star">
+                                <svg width="16" height="17" viewBox="0 0 16 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M10.43 6.00001L8.95996 1.16001C8.66996 0.21001 7.32996 0.21001 7.04996 1.16001L5.56996 6.00001H1.11996C0.149959 6.00001 -0.250041 7.25001 0.539959 7.81001L4.17996 10.41L2.74996 15.02C2.45996 15.95 3.53996 16.7 4.30996 16.11L7.99996 13.31L11.69 16.12C12.46 16.71 13.54 15.96 13.25 15.03L11.82 10.42L15.46 7.82001C16.25 7.25001 15.85 6.01001 14.88 6.01001H10.43V6.00001Z" fill="#ffffff"/>
+                                </svg>
+                            </label>
+                        </div>
+                        <textarea className="review__content" name="review" id="reviewContent"  rows="10" placeholder='Введіть відгук'></textarea>
+                        <button className="review__save" onClick={() => setReview(false)}>Опублікувати</button>
+                    </div>}
+                    
                     <div className="review__item">
                         <p className="review__user-name">Ігор</p>
                         <div className="review__stars">

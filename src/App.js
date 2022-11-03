@@ -2,6 +2,7 @@ import { Routes, Route } from 'react-router-dom'
 
 
 import { Home, Shop, ProductCart, Basket, Favourite, Auth, Account } from './pages';
+import { NewEdit, Search, Client, Order } from './components';
 import './App.scss';
 function App() {
   return (
@@ -14,7 +15,13 @@ function App() {
         <Route path="/favourite" element={<Favourite />} />
         <Route path="/favourite" element={<Favourite />} />
         <Route path="/auth" element={<Auth />} />
-        <Route path="/account" element={<Account />} />
+        <Route path="/account" element={<Account role={"client"}/>}>
+          <Route path='client' element={<Client />} />
+          <Route path='order' element={<Order role="client" />} />
+          <Route path='new-product' element={<NewEdit edit={false}/>} />
+          <Route path='search' element={<Search />} />
+          <Route path='edit-product/:id' element={<NewEdit edit={true}/>} />
+        </Route>
       </Routes>
     </div>
   );

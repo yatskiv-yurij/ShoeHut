@@ -175,13 +175,23 @@
     background-color: $gray;
     color: $white;
 
+    &__wrapper{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    &__new-open{
+        @include button();
+        font-size: 16px;
+        width: 20%;
+        padding: 10px 0;
+    }
+
     &__item{
         padding: 10px;
         border-bottom: 1px solid $white;
-
-        &+&{
-            margin-top: 50px;
-        }
+        margin-top: 50px;
     }
 
     &__user-name{
@@ -214,7 +224,75 @@
         left: 50%;
         transform: translateX(-50%);
     }
+
+    &__new{
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background-color: $green;
+        padding: 50px 25px;
+        border-radius: 10px;
+        text-align: center;
+        z-index: 100;
+    }
+
+    &__content{
+        resize: none;
+        border: 1px solid $black;
+        border-radius: 10px;
+        background-color: transparent;
+        padding: 10px;
+        outline: none;
+        width: 100% !important;
+        margin-top: 30px;
+
+        &::placeholder{
+            color: $black
+        }
+    }
+
+    &__save{
+        @include button();
+        margin-top: 30px;
+    }
 }
 .recommend{
     padding: 100px 0;
+}
+
+.rating{
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: center;
+    &__radio{
+        display: none;
+    }
+
+    &__star{
+        margin-right: 5px;
+        cursor: pointer;
+
+        svg{
+            width: 25px;
+            height: auto;
+        }
+    }
+
+    & > input:checked ~ label svg path {
+        fill: #FFFD54;    
+    }
+
+    &:not(:checked) > label:hover svg path,
+    &:not(:checked) > label:hover ~ label svg path{
+        fill: #b9b722;  
+    }
+
+    & > input:checked > label:hover ~ label svg path,
+    & > input:checked + label:hover ~ label svg path,
+    & > input:checked ~ label:hover ~ label svg path,
+    & > label:hover ~ input:checked ~ label svg path{
+        fill: #b9b722;
+}
+
 }

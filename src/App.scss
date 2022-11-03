@@ -56,7 +56,7 @@ body{
         @include button();
     }
 }
-.sale, .recommend{
+.sale, .recommend, .account{
     .swiper{
         position: static;
 
@@ -112,6 +112,48 @@ body{
 
             &-drag{
                 background-color: $green;
+            }
+        }
+    }
+}
+
+.account{
+    .swiper{
+        &-slide{
+            background-color: transparent;
+            display: block;
+            border-radius: none;
+            text-align: center;
+        }
+
+        &-button{ 
+            &-prev, &-next{
+                width: 40px;
+                height: 40px;
+                background: $gray;
+                position: absolute;
+                border-radius: 100%;
+                &::after{
+                    content: url('data:image/svg+xml; utf8, <svg width="16" height="20" viewBox="0 0 16 30" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1.84961 28.1998L12.7163 17.3331C13.9996 16.0498 13.9996 13.9498 12.7163 12.6665L1.84961 1.7998" stroke="white" stroke-width="3" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/></svg>');
+                    position: relative;
+                }
+            }
+
+            &-prev{
+                left: -90px;
+                &::after{
+                    transform: rotate(180deg) ;
+                     left: -2px;
+                     top: 6px;
+                }
+            }
+
+            &-next{
+                right: -90px;
+                &::after{
+                     right: -2px;
+                     top: -6px;
+                }
             }
         }
     }

@@ -16,7 +16,7 @@
         @include simpleText();
         margin-bottom: 20px;
         cursor: pointer;
-
+        text-decoration: none;
         border:none;
         outline: none;
         background-color: transparent;
@@ -50,9 +50,7 @@
         margin-top: 20px;
     }
 
-    &__user{
-        margin-top: 50px;
-    }
+    
 
     &__item {
         margin-top: 50px;
@@ -76,14 +74,20 @@
             }
         }
 
-        span{
-            position: absolute;
-            top: 10px;
-            left: 5px;
+        &-image{
+            display: flex;
+            align-items: center;
+            label{
+                position: static;
+            }
         }
+
+        
     }
 
-    &__email, &__phone, &__name, &__lastname, &__old-pass, &__new-pass, &__repeat-pass{
+       
+
+    &__input{
         width: 100%;
         background-color: transparent;
         border: none;
@@ -97,28 +101,7 @@
         }   
     }
 
-    &__phone {
-        padding-left: 50px;
-    
-        &~ label{
-            top: -20px;
-            @include text(14px, 400, 22px);
-        }
-    }
-
-    &__old-pass{
-        width: 45%;
-    }
-
-    &__subtitle{
-        color: $white;
-        @include text(24px, 500, 35px);
-        margin: 50px 0 0;
-    }
-
-    &__save{
-        @include button();
-        width: 32%;
-        margin-top: 50px;
+    .product__img{
+        width: 150px;
     }
 }

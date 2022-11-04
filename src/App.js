@@ -1,7 +1,7 @@
 import { Routes, Route } from 'react-router-dom'
 
 
-import { Home, Shop, ProductCart, Basket, Favourite, Auth, Account } from './pages';
+import { Home, Shop, ProductCart, Basket, Favourite, Auth, Account, Guarantee, Exchange, AboutUs } from './pages';
 import { NewEdit, Search, Client, Order } from './components';
 import './App.scss';
 function App() {
@@ -22,6 +22,9 @@ function App() {
           <Route path='search' element={<Search />} />
           <Route path='edit-product/:id' element={<NewEdit edit={true}/>} />
         </Route>
+        <Route path="/guarantee" element={<Guarantee />} />
+        <Route path="/exchange" element={<Exchange />} />
+        <Route path="/about-us" element={<AboutUs />} />
       </Routes>
     </div>
   );

@@ -86,7 +86,7 @@ export const Footer = () => {
                                 <Link className="footer__menu_link" to={'/about-us'}>Про нас</Link>
                             </li>
                             <li className="footer__menu_item">
-                                <Link className="footer__menu_link" to={'/guarantees'}>Гарантія</Link>
+                                <Link className="footer__menu_link" to={'/guarantee'}>Гарантія</Link>
                             </li>
                             <li className="footer__menu_item">
                                 <Link className="footer__menu_link" to={'/exchange'}>Обмін та повернення</Link>

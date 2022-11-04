@@ -5,3 +5,6 @@ export { Basket } from './Basket';
 export { Favourite } from './Favourite';
 export { Auth } from './Auth';
 export { Account } from './Account';
+export { Guarantee } from './Guarantee';
+export { Exchange } from './Exchange';
+export { AboutUs } from './AboutUs';

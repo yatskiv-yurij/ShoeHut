@@ -1,0 +1,20 @@
+@import "../../variable.scss";
+
+
+.exchange{
+    padding: 100px 0;
+    background-color: $green;
+    &__text, &__item{
+        @include simpleText();
+        margin-bottom: 20px;
+    }
+
+    &__content{
+        margin-top: 50px;
+    }
+
+    &__subtitle{
+        @include text(28px, 400, 35px);
+        margin-top: 50px !important;
+    }
+}

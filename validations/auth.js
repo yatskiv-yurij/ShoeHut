@@ -11,7 +11,7 @@ export const registerValidation = [
     body('password', 'Пароль повинен бути не менше 5 символів').isLength({ min: 5 }),
     body('lastname', 'Вкажіть прізвище').isLength({ min: 3 }),
     body('name', 'Вкажіть ім\'я').isLength({ min: 3 }),
-    body('phone', 'Вкажіть вірний номер телефону').optional().isLength({min: 13, max: 13}),
+    body('phone', 'Вкажіть вірний номер телефону').optional().isLength({min: 9, max: 9}),
 ];
 
 export const updateValidation = [
@@ -19,5 +19,5 @@ export const updateValidation = [
     body('password', 'Пароль повинен бути не менше 5 символів').optional().isLength({ min: 5 }),
     body('lastname', 'Вкажіть прізвище').isLength({ min: 3 }),
     body('name', 'Вкажіть ім\'я').isLength({ min: 3 }),
-    body('phone', 'Вкажіть вірний номер телефону').optional().isLength({min: 13, max: 13}),
+    body('phone', 'Вкажіть вірний номер телефону').optional().isLength({min: 9, max: 9}),
 ];

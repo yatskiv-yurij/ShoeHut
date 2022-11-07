@@ -158,3 +158,10 @@ body{
         }
     }
 }
+
+.error{
+    color: #D92323;
+    margin: 5px 0 0 5px;
+    text-align: left;
+    @include text(14px, 400, 25px);
+}

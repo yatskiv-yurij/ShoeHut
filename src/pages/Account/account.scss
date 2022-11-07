@@ -95,10 +95,10 @@
         border-bottom: 1px solid $gray;
         padding: 10px 5px;
 
-        &:focus ~ label, &:valid ~ label{
+        &:focus ~ label, &:not(:placeholder-shown) ~ label{
             top: -20px;
             @include text(14px, 400, 22px);
-        }   
+        } 
     }
 
     .product__img{

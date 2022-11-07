@@ -14,6 +14,8 @@ export const NewEdit = ({edit}) => {
         setCountImage(event.target.files.length);
     }
 
+    
+
     return (
         <>
             <h3 className="account__title title2">{ !edit ? "Новий товар" : "Редагувати товар"}</h3>

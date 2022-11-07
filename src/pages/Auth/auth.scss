@@ -5,9 +5,20 @@
         padding: 0 75px;
         width: 50%;
         text-align: center;
+        position: relative;
 
         &__title{
             font-weight: 400;
+        }
+
+        &__error{
+            text-align: center;
+            position: absolute;
+            display: block;
+            margin: 0;
+            left: 50%;
+            top: -50px;
+            transform: translateX(-50%)
         }
 
         &__open{
@@ -60,7 +71,7 @@
             padding: 10px 5px;
             color: $white;
 
-            &:focus ~ label, &:valid ~ label{
+            &:focus ~ label, &:not(:placeholder-shown) ~ label{
                 top: -20px;
                 @include text(14px, 400, 22px);
             }

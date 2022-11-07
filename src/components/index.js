@@ -8,3 +8,4 @@ export { NewEdit } from './NewEdit';
 export { Search } from './Search';
 export { Client } from './ClientData';
 export { Order } from './Order';
+export { Spiner } from './LoadSpiner';

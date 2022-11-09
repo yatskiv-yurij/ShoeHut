@@ -7,20 +7,26 @@ import './App.scss';
 import { Home, Shop, ProductCart, Basket, Favourite, Auth, Account, Guarantee, Exchange, AboutUs } from './pages';
 import { NewEdit, Search, Client, Order } from './components';
 import { fetchAuthMe } from './redux/slices/auth';
+import { fetchAllPosts } from './redux/slices/post';
 
 
 function App() {
   const dispatch = useDispatch();
   const [token, setToken] = useState();
   const role = token ? decodeToken(token).role : 'client';
+  
 
   if(window.localStorage.getItem('token') != null  && !token){
     setToken(window.localStorage.getItem('token'));
   }
 
   useEffect(() => {
+    dispatch(fetchAllPosts());
+  }, []);
+  useEffect(() => {
     dispatch(fetchAuthMe());
-}, []);
+  }, []);
+  
 
   return (
     <div className="App">

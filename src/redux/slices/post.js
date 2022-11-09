@@ -1,23 +1,18 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "../../axios";
 
-export const fetchNewPost= createAsyncThunk('auth/fetchNewPost', async(params) => {
+export const fetchNewPost = createAsyncThunk('post/fetchNewPost', async(params) => {
     const {data} = await axios.post('/posts', params);
     return data;
 });
 
-export const fetchAddImages= createAsyncThunk('auth/fetchAddImages', async(params) => {
-    const {data} = await axios.post('/upload', params);
+export const fetchAllPosts = createAsyncThunk('post/fetchAllPosts', async(params) => {
+    const {data} = await axios.get('/posts', params);
     return data;
 });
 
 const initialState = {
     posts: {
-        data:null,
-        status: 'loading',  
-    },
-    
-    images: {
         data:null,
         status: 'loading',  
     }
@@ -28,17 +23,17 @@ const postSlice = createSlice({
     initialState,
     reducers: {},
     extraReducers: {
-        [fetchAddImages.pending]:  (state) => {
-            state.images.status = 'loading';
-            state.images.data = null;
+        [fetchAllPosts.pending]:  (state) => {
+            state.posts.status = 'loading';
+            state.posts.data = null;
         },
-        [fetchAddImages.fulfilled]:  (state, action) => {
-            state.images.status = 'loaded';
-            state.images.data = action.payload;
+        [fetchAllPosts.fulfilled]:  (state, action) => {
+            state.posts.status = 'loaded';
+            state.posts.data = action.payload;
         },
-        [fetchAddImages.reject]:  (state) => {
-            state.images.status = 'error';
-            state.images.data = null;
+        [fetchAllPosts.reject]:  (state) => {
+            state.posts.status = 'error';
+            state.posts.data = null;
         },
     }
 

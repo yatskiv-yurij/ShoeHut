@@ -1,6 +1,7 @@
 import React from 'react';
-import { Editor, EditorState, getDefaultKeyBinding, RichUtils,} from 'draft-js';  //convertToRaw 
-// import draftToHtml from 'draftjs-to-html';
+import { Editor, EditorState, getDefaultKeyBinding, RichUtils, ContentState, convertToRaw, convertFromHTML } from 'draft-js'; 
+import draftToHtml from 'draftjs-to-html';
+import htmlToDraft from 'html-to-draftjs';
 // import InnerHTML from 'dangerously-set-html-content';
 
 import './editor.scss';
@@ -9,14 +10,25 @@ class DraftEditor extends React.Component {
     constructor(props) {
         super(props);
         this.state = {editorState: EditorState.createEmpty()};
-
+        
+        
         this.focus = () => this.refs.editor.focus();
-        this.onChange = (editorState) => this.setState({editorState});
-
+        this.onChange = (editorState) =>{
+            this.setState({editorState});
+            props.setDataEditor(draftToHtml(convertToRaw(editorState.getCurrentContent())));
+        }
+        
         this.handleKeyCommand = this._handleKeyCommand.bind(this);
         this.mapKeyToEditorCommand = this._mapKeyToEditorCommand.bind(this);
         this.toggleBlockType = this._toggleBlockType.bind(this);
         this.toggleInlineStyle = this._toggleInlineStyle.bind(this);
+    }
+    htmlToDraftBlocks(html) {
+        const blocksFromHtml = htmlToDraft(html);
+        const { contentBlocks, entityMap } = blocksFromHtml;
+        const contentState = ContentState.createFromBlockArray(contentBlocks, entityMap);
+        const editorState = EditorState.createWithContent(contentState);
+        return editorState;
     }
 
     _handleKeyCommand(command, editorState) {
@@ -62,14 +74,15 @@ class DraftEditor extends React.Component {
     }
 
     render() {
-        const {editorState} = this.state;
+        const {editorState} = this.props.dataEditor ? { editorState: EditorState.createWithContent(ContentState.createFromBlockArray(convertFromHTML(this.props.dataEditor))) } : this.state;
         let className = 'RichEditor-editor';
         var contentState = editorState.getCurrentContent();
         if (!contentState.hasText()) {
-        if (contentState.getBlockMap().first().getType() !== 'unstyled') {
-            className += ' RichEditor-hidePlaceholder';
+            if (contentState.getBlockMap().first().getType() !== 'unstyled') {
+                className += ' RichEditor-hidePlaceholder';
+            }
         }
-        }
+        
         // const rawContentState = convertToRaw(editorState.getCurrentContent());
  
         // const markup = draftToHtml(

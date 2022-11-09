@@ -3,21 +3,21 @@ import { Link } from 'react-router-dom';
 
 import './product.scss';
 
-export const Product = ({edit}) => {
+export const Product = ({edit, data}) => {
 
-    const link = !edit ? '/shop/:id' : '/account/edit-product/:id';
+    const link = !edit ? '/shop/:id' : `/account/edit-product/${data._id}`;
     return (   
         <div className="product" >
-            <img src="http://localhost:4000/uploads/product1-1.jpg" alt="Товар" className="product__img"  
-                onMouseOver={e => (e.currentTarget.src = "http://localhost:4000/uploads/product1-2.jpg")} 
-                onMouseOut={e => (e.currentTarget.src = "http://localhost:4000/uploads/product1-1.jpg")}
+            <img src={"http://localhost:4000" + data.images[0]} alt="Товар" className="product__img"  
+                onMouseOver={e => (e.currentTarget.src = "http://localhost:4000" + data.images[1])} 
+                onMouseOut={e => (e.currentTarget.src = "http://localhost:4000" + data.images[0])}
             />
             <Link className="product__data" to={link}>
-                <p className="product__name">Високі кросівки</p>
-                <p className="product__brand">Nike</p>
+                <p className="product__name">{data.title}</p>
+                <p className="product__brand">{data.brand}</p>
                 <div className="product__prices">
-                    <p className="product__new-price"><span>1 399</span>UAH</p>
-                    <p className="product__old-price"><span>1 399</span>UAH</p>
+                    <p className="product__new-price"><span>{data.discount ? data.new_price : data.price}</span>UAH</p>
+                    {data.discount && <p className="product__old-price"><span>{data.price}</span>UAH</p>}
                 </div>
             </Link>
              {!edit && <svg className='heart empty-heart' width="25" height="23" viewBox="0 0 25 23" fill="none" xmlns="http://www.w3.org/2000/svg">

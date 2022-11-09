@@ -54,11 +54,12 @@
 
     &__search-product{
         display: flex;
-        justify-content: space-between;
+        justify-content: center;
+        gap: 20px;
         flex-wrap: wrap;
 
         .product{
-            width: 24%;
+            width: 30%;
             &_data {
                  margin-left: 0; 
             }

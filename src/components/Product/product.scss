@@ -20,8 +20,11 @@
     }
 
     &__data{
+        margin: 0 !important;
         text-decoration: none;
         color: #000;
+        display: block;
+        margin-bottom: 40px !important;
     }
 
     .heart{
@@ -44,6 +47,9 @@
     &__prices{
         display: flex;
         align-items: center;
+        position: absolute;
+        width: 100%;
+        bottom: 10px;
     }
 
     &__new-price{

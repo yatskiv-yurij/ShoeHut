@@ -1,24 +1,15 @@
-import React, { useState} from 'react';
-
+import React, { useEffect } from 'react';
+import { useSelector } from "react-redux";
 
 import './shop.scss';
 import header_img from '../../image/header-shop.png';
-import { Nav, Footer, Pagination} from '../../components/';
-
-
-const products = () => {
-    const rows = [];
-    for (let i = 0; i < 381; i++) {
-        
-        rows.push(i);
-    }
-    return rows;
-}
+import { Nav, Footer, Pagination, Spiner} from '../../components/';
 
 export const Shop = () => {
-    const [goods, setGoods] = useState(products());
-
-
+    const{ posts } = useSelector(state => state.post);
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    });
     return (
         <>
             <Nav />
@@ -76,15 +67,15 @@ export const Shop = () => {
                             <button className="filter__apply">Застосувати</button>
                             <div className="filter__search">
                                 <button className="filter__search-btn"></button>
-                                <input type="text" className="filter__search-input" placeholder='Пошук'/>
-                                
+                                <input type="text" className="filter__search-input" placeholder='Пошук'/>  
                             </div>
                             
                         </div>
                     </div>
-                    {
-                        <Pagination items={goods} />  
-                    }
+                    {posts.status === 'loading' && <Spiner />}
+                    {posts.data && <Pagination items={posts.data} /> }
+                       
+                    {/* { !posts.data && <Pagination items={products()} />} */}
                 </div>
             </div>
             <Footer />

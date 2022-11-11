@@ -11,6 +11,7 @@ export const fetchAllPosts = createAsyncThunk('post/fetchAllPosts', async(params
     return data;
 });
 
+
 const initialState = {
     posts: {
         data:null,

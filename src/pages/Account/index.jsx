@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Outlet, Link, useNavigate, Navigate } from "react-router-dom"
 import { useDispatch } from "react-redux";
 
@@ -39,7 +39,7 @@ export const Account = ({setToken, role}) => {
                     {role==="admin" && <div className="account__wrapper">
                         
                         <div className="account__menu">
-                            <Link className="account__link" to="/account/new-product">Новий товар</Link>
+                            <Link className="account__link" onClick={window.location.reload} to="/account/new-product" >Новий товар</Link>
                             <Link className="account__link" to="/account/search">Редагувати товар</Link>
                             <Link className="account__link" to="/account/order">Замовлення</Link>
                             <button className="account__link" onClick={onClickLogout}>Вийти</button>

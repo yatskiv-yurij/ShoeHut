@@ -1,34 +1,35 @@
 import React from 'react';
-import { Editor, EditorState, getDefaultKeyBinding, RichUtils, ContentState, convertToRaw, convertFromHTML } from 'draft-js'; 
+import { Editor, EditorState, getDefaultKeyBinding, RichUtils, ContentState, convertToRaw} from 'draft-js'; 
 import draftToHtml from 'draftjs-to-html';
 import htmlToDraft from 'html-to-draftjs';
 // import InnerHTML from 'dangerously-set-html-content';
-
 import './editor.scss';
 
 class DraftEditor extends React.Component {
     constructor(props) {
         super(props);
         this.state = {editorState: EditorState.createEmpty()};
-        
-        
-        this.focus = () => this.refs.editor.focus();
         this.onChange = (editorState) =>{
             this.setState({editorState});
             props.setDataEditor(draftToHtml(convertToRaw(editorState.getCurrentContent())));
         }
+
+        try {
+            if(this.props.dataEditor){
+                const blocksFromHtml = htmlToDraft(this.props.dataEditor);
+                this.state= { editorState: EditorState.createWithContent(ContentState.createFromBlockArray(blocksFromHtml.contentBlocks, blocksFromHtml.entityMap))};
+            }
+        } catch (err) {
+            console.warm(err)
+        }
+       
+            
+        
         
         this.handleKeyCommand = this._handleKeyCommand.bind(this);
         this.mapKeyToEditorCommand = this._mapKeyToEditorCommand.bind(this);
         this.toggleBlockType = this._toggleBlockType.bind(this);
         this.toggleInlineStyle = this._toggleInlineStyle.bind(this);
-    }
-    htmlToDraftBlocks(html) {
-        const blocksFromHtml = htmlToDraft(html);
-        const { contentBlocks, entityMap } = blocksFromHtml;
-        const contentState = ContentState.createFromBlockArray(contentBlocks, entityMap);
-        const editorState = EditorState.createWithContent(contentState);
-        return editorState;
     }
 
     _handleKeyCommand(command, editorState) {
@@ -74,7 +75,7 @@ class DraftEditor extends React.Component {
     }
 
     render() {
-        const {editorState} = this.props.dataEditor ? { editorState: EditorState.createWithContent(ContentState.createFromBlockArray(convertFromHTML(this.props.dataEditor))) } : this.state;
+        const {editorState} = this.state;
         let className = 'RichEditor-editor';
         var contentState = editorState.getCurrentContent();
         if (!contentState.hasText()) {
@@ -82,12 +83,6 @@ class DraftEditor extends React.Component {
                 className += ' RichEditor-hidePlaceholder';
             }
         }
-        
-        // const rawContentState = convertToRaw(editorState.getCurrentContent());
- 
-        // const markup = draftToHtml(
-        //     rawContentState
-        // );
         return (
             <>
                 {/* <InnerHTML html={markup} /> */}
@@ -102,15 +97,16 @@ class DraftEditor extends React.Component {
                     />
                     <div className={className} onClick={this.focus}>
                     <Editor
-                        blockStyleFn={getBlockStyle}
-                        customStyleMap={styleMap}
+                        // blockStyleFn={getBlockStyle}
+                        // customStyleMap={styleMap}
                         editorState={editorState}
                         handleKeyCommand={this.handleKeyCommand}
                         keyBindingFn={this.mapKeyToEditorCommand}
                         onChange={this.onChange}
                         placeholder="Введіть опис товару"
-                        ref="editor"
-                        spellCheck={true}
+                        // ref="editor"
+                        // spellCheck={true}
+                        // readOnly={false}
                     />
                     </div>
                 </div>
@@ -121,21 +117,7 @@ class DraftEditor extends React.Component {
     }
 
     // Custom overrides for "code" style.
-    const styleMap = {
-    CODE: {
-        backgroundColor: 'rgba(0, 0, 0, 0.05)',
-        fontFamily: '"Inconsolata", "Menlo", "Consolas", monospace',
-        fontSize: 16,
-        padding: 2,
-    },
-    };
-
-    function getBlockStyle(block) {
-    switch (block.getType()) {
-        case 'blockquote': return 'RichEditor-blockquote';
-        default: return null;
-    }
-    }
+    
 
     class StyleButton extends React.Component {
     constructor() {

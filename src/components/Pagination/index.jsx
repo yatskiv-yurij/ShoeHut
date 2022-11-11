@@ -1,16 +1,16 @@
-import React, {useState, useEffect} from 'react'
+import React, {useState, useEffect, useRef} from 'react'
 import ReactPaginate from 'react-paginate';
 
 import './pagination.scss';
 
 import {Product} from '../Product';
 
-export const Pagination = (props) =>{
-    const { items } = props;
+export const Pagination = ({items}) =>{
+  const paginationRef = useRef(null); 
     const [currentItems, setCurrentItems] = useState([]);
     const [pageCount, setPageCount] = useState(0);
     const [itemOffset, setItemOffset] = useState(0);
-    const itemsPerPage = 25;
+    const itemsPerPage = 10;
     useEffect(() => {
       const endOffset = itemOffset + itemsPerPage;
       setCurrentItems(items.slice(itemOffset, endOffset));
@@ -20,14 +20,15 @@ export const Pagination = (props) =>{
     const handlePageClick = (event) => {
       const newOffset = (event.selected * itemsPerPage) % items.length;
       setItemOffset(newOffset);
+      paginationRef.current.scrollIntoView();
     };
   
     return (
       <>
-        <div className="goods__all">
-            {currentItems && currentItems.map(product => {
+        <div className="goods__all" ref={paginationRef}>
+            {currentItems && currentItems.map((product, index) => {
                 return (
-                    <Product key={product}/>
+                    <Product key={index} edit={false} data={product}/>
                 )
             })}
         </div>

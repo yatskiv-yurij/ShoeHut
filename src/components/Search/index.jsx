@@ -1,12 +1,17 @@
-import React, { useState, useRef } from "react";
-import { useSelector } from "react-redux";
+import React, { useState, useRef, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 
 import './search.scss';
 import { Product } from "../Product";
+import { fetchAllPosts } from '../../redux/slices/post';
 
 export const Search = () => {
+    const dispatch = useDispatch();
     const searchRef = useRef(null);
     const [searchProduct, setSearchProduct] = useState(null);
+    useEffect(() => {
+        dispatch(fetchAllPosts());
+    }, []);
     const { posts } = useSelector(state => state.post);
     const onChangeSearch = (event) => {
         if(event.target.value.length > 5){

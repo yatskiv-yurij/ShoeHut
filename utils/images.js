@@ -28,12 +28,11 @@ export const saveImages = (req, res) => {
     }
 };
 
-export const deleteImages = async(req, res) => {
+export const deleteImages = (req, res) => {
     try {
-        const files = req.body.images;
-        files.forEach(path => {
-            fs.unlinkSync("." + path);
-        });
+        
+        const files = req.query.images;
+        files.forEach(path => fs.unlinkSync("." + path));
         res.json({
             success: true,
         });

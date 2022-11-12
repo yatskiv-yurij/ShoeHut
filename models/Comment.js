@@ -18,6 +18,9 @@ const CommentSchema = new mongoose.Schema({
     count_star: {
         type: Number,
     }
+},
+{
+    timestamps: true,
 });
 
 export default mongoose.model("Comment", CommentSchema);

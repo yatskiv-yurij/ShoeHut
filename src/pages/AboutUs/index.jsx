@@ -1,9 +1,12 @@
-import React from "react";
+import React, { useEffect } from "react";
 
 import './about-us.scss';
 import { Nav, Footer } from "../../components";
 
 export const AboutUs = () => {
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    });
     return (
         <>
             <Nav />

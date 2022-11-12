@@ -13,7 +13,7 @@ export const Client = () => {
     const [errorPassword, setErrorPassword] = useState(false);
     const [errorOldPassword, setOldErrorPassword] = useState(false);
     const dispatch= useDispatch();
-    const { auth, success } = useSelector(state => state.auth);
+    const { auth } = useSelector(state => state.auth);
     const isDataLoading = auth.status === 'loading';
 
     useEffect(() => {
@@ -41,9 +41,8 @@ export const Client = () => {
                 if(result){
                     setOldErrorPassword(false);
                     dispatch(fetchUpdate(values));
-                    if(success.data){
-                        window.location.reload();
-                    }
+                    window.location.reload();
+                    
                 }else{
                     setOldErrorPassword(true);
                 }

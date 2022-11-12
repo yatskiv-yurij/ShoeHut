@@ -127,6 +127,8 @@
         border-radius: 10px;
         margin-right: 10px;
         cursor: pointer;
+        width: 50px;
+        display: block;
     }
 
     &__basket{
@@ -229,6 +231,7 @@
         position: fixed;
         top: 50%;
         left: 50%;
+        width: 30%;
         transform: translate(-50%, -50%);
         background-color: $green;
         padding: 50px 25px;
@@ -255,6 +258,37 @@
     &__save{
         @include button();
         margin-top: 30px;
+    }
+
+    &__close{
+        cursor: pointer;
+        background-color: transparent;
+        border: none;
+        outline: none;
+        padding: 0;
+
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        svg{
+            width: 20px;
+            height: 20px;
+            path{
+                fill: lighten($black, 50%);
+            }
+        }
+
+        &:hover{
+            svg{
+                path{
+                    fill: $black;
+                }
+            }
+        }
+    }
+    &__error{
+        text-align: center;
+        margin-bottom: 10px;
     }
 }
 .recommend{

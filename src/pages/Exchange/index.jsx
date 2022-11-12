@@ -1,9 +1,12 @@
-import React from "react";
+import React, {useEffect} from "react";
 
 import './exchange.scss'
 import { Nav, Footer } from "../../components";
 
 export const Exchange = () => {
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    });
     return (
         <>
             <Nav />

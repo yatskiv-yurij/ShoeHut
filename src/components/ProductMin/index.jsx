@@ -8,7 +8,7 @@ export const ProductMin = ({size, counter}) => {
     return (
         <>
             <img src="http://localhost:4000/uploads/product1-1.jpg" alt="product" className="product__img"/>
-            <div className="product__data">
+            <div className="product__info">
                 <Link className="product__name title2" to={'/shop/:id'}>Високі кросівки</Link>
                 <p className="product__brand">Nike</p>
                 {size && <p className="product__size">Розмір: 41</p>}

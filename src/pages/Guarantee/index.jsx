@@ -1,9 +1,12 @@
-import React from "react";
+import React, { useEffect } from "react";
 
 import "./guarantee.scss";
 import { Nav, Footer } from "../../components";
 
 export const Guarantee = () => {
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    });
     return (
         <>
             <Nav />

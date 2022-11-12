@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useForm } from 'react-hook-form';
 import { ErrorMessage } from '@hookform/error-message';
@@ -14,6 +14,9 @@ export const Auth = ({setToken}) => {
     const { auth } = useSelector(state => state.auth);
     const dispatch = useDispatch();
     const [error, setError] = useState(false);
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    });
     const {
         register, 
         handleSubmit, 

@@ -2,7 +2,7 @@ import React from 'react';
 import { Editor, EditorState, getDefaultKeyBinding, RichUtils, ContentState, convertToRaw} from 'draft-js'; 
 import draftToHtml from 'draftjs-to-html';
 import htmlToDraft from 'html-to-draftjs';
-// import InnerHTML from 'dangerously-set-html-content';
+
 import './editor.scss';
 
 class DraftEditor extends React.Component {
@@ -85,7 +85,7 @@ class DraftEditor extends React.Component {
         }
         return (
             <>
-                {/* <InnerHTML html={markup} /> */}
+                
                 <div className="RichEditor-root">
                     <BlockStyleControls
                     editorState={editorState}
@@ -97,16 +97,12 @@ class DraftEditor extends React.Component {
                     />
                     <div className={className} onClick={this.focus}>
                     <Editor
-                        // blockStyleFn={getBlockStyle}
-                        // customStyleMap={styleMap}
                         editorState={editorState}
                         handleKeyCommand={this.handleKeyCommand}
                         keyBindingFn={this.mapKeyToEditorCommand}
                         onChange={this.onChange}
                         placeholder="Введіть опис товару"
-                        // ref="editor"
-                        // spellCheck={true}
-                        // readOnly={false}
+                        ref="editor"
                     />
                     </div>
                 </div>

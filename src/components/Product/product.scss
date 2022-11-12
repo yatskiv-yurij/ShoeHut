@@ -36,8 +36,10 @@
     }
 
     &__name{
-        @include simpleText();
-        margin-top: 15px;
+        &_simple{
+            @include simpleText();
+            margin-top: 15px;
+        }
     }
     &__brand{
         @include simpleText();

@@ -9,6 +9,9 @@ import { logout } from "../../redux/slices/auth";
 export const Account = ({setToken, role}) => {
     const dispatch = useDispatch();
     const navigate = useNavigate();
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    });
     const onClickLogout = () => {
         dispatch(logout());
         window.localStorage.removeItem('token');  

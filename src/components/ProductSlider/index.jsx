@@ -9,7 +9,7 @@ import 'swiper/css/navigation';
 import 'swiper/css/scrollbar';
 
 
-export const ProductSlider = () => {
+export const ProductSlider = ({data}) => {
     return (
         <Swiper
             modules={[Navigation, Scrollbar]}
@@ -18,21 +18,12 @@ export const ProductSlider = () => {
             navigation
             scrollbar={{ draggable: true }}
         >
-            <SwiperSlide>
-                <Product />
-            </SwiperSlide> 
-            <SwiperSlide>
-                <Product />
-            </SwiperSlide> 
-            <SwiperSlide>
-                <Product />
-            </SwiperSlide> 
-            <SwiperSlide>
-                <Product />
-            </SwiperSlide> 
-            <SwiperSlide>
-                <Product />
-            </SwiperSlide> 
+
+            {data && data.map((post, index) => (
+                <SwiperSlide key={index}>
+                    <Product edit={false} data={post}/>
+                </SwiperSlide> 
+            ))}
         </Swiper>
     );
 };

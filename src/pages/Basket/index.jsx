@@ -1,10 +1,13 @@
-import React from "react";
+import React, { useEffect } from "react";
 
 
 import './basket.scss';
 import { Nav, Footer, ProductMin } from "../../components";
 
 export const Basket = () => {
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    });
     return (
         <>
             <Nav />

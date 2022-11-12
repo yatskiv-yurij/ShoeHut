@@ -1,11 +1,24 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import { useSelector } from "react-redux";
 
 import './home.scss';
 import header_img from '../../image/header-main.png';
 import { Nav, Footer, Product, ProductSlider} from '../../components/';
 
 export const Home = () => {
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    });
+    const{ posts } = useSelector(state => state.post)
+    const popular = posts.data;
+    const sale = posts.data && posts.data.filter((post) => {
+        if(post.discount){
+            return post;
+        }
+    }).slice(0,8);
+
+    
     return (
         <>
             <Nav />
@@ -24,17 +37,10 @@ export const Home = () => {
             <div className="popular">
                 <div className="container">
                     <h3 className="popular__title title2">Популярні</h3>
-                    <div className="popular__products"> 
-                        <Product />
-                        <Product />
-                        <Product />
-                        <Product />
-                        <Product />
-                        <Product />
-                        <Product />
-                        <Product />
-                        <Product />
-                        <Product />
+                    <div className="popular__products">
+                        { popular && [...popular].sort((post, nextpost) => nextpost.popular - post.popular).slice(0,10).map((post, index) => (
+                            <Product key={index} edit={false} data={post}/>
+                        ))} 
                     </div>  
                 </div>
             </div>
@@ -42,7 +48,10 @@ export const Home = () => {
                 <div className="container">
                     <h3 className="sale__title title2">Розпродаж</h3>
                     <div className="sale__wrapper">
-                        <ProductSlider />
+                        {
+                            sale && <ProductSlider data={sale}/>
+                        }
+                        
                     </div>
                 </div>
             </div>

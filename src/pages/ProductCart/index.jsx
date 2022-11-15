@@ -27,6 +27,7 @@ export const ProductCart = () => {
     const { id } = useParams();
     const { posts } = useSelector(state => state.post);
     const { auth } = useSelector(state => state.auth);
+    const isAuth = useSelector(selectIsAuth);
     const [firstSwiper, setFirstSwiper] = useState(null);
     const [secondSwiper, setSecondSwiper] = useState(null);
     const [review, setReview] = useState(false);
@@ -34,7 +35,8 @@ export const ProductCart = () => {
     const [comments, setComments] = useState(null);
     const [countComments, setCountComments] = useState(3);
     const [error, setError] = useState("");
-    const isAuth = useSelector(selectIsAuth);
+    const [size, setSize] = useState(null); 
+    
     const {
         register, 
         handleSubmit, 
@@ -81,12 +83,45 @@ export const ProductCart = () => {
             navigate("/auth");
         }
         
-     }
+    }
 
-     const converDate = (timestamp) => {
+    const converDate = (timestamp) => {
         const date = new Date(timestamp);
         return moment(date).format("DD.MM.YYYY");
-     }
+    }
+
+    const addToCart = () => {
+
+        if(size && size !== 'error') {
+            const data = {
+                product: id,
+                size,
+                price: productData.discount ? productData.new_price : productData.price,
+                count: 1,
+            }
+
+            if(window.localStorage.getItem('basket')){
+                const basket = JSON.parse(window.localStorage.getItem('basket'));
+                const isproduct = basket.findIndex((product) => product.product===id);
+                if(isproduct >= 0){
+                    basket[isproduct] = data
+                }else{
+                    basket.push(data);
+                }
+                 
+                window.localStorage.setItem('basket', JSON.stringify(basket));
+            }
+            else{
+                window.localStorage.setItem('basket', JSON.stringify([data]));
+            }
+        }else{
+            setSize('error');
+        }
+        
+        
+    }
+
+
     return (
         <>
             <Nav />
@@ -97,12 +132,20 @@ export const ProductCart = () => {
                         <div className="cart__photos">
                             <div className="cart__vertical-photos">
                                 <Swiper
-                                    slidesPerView={4}
+                                    slidesPerView={2}
                                     navigation={false}
                                     direction='vertical'
                                     modules={[Controller]}
                                     onSwiper={setFirstSwiper}
                                     controller={{ control: secondSwiper }}
+                                    breakpoints={{
+                                        500: {
+                                            slidesPerView: 3,
+                                        },
+                                        991: {
+                                            slidesPerView: 4,
+                                        },
+                                    }}
                                 >
                                     {
                                         productData.images.map((image, index) => (
@@ -146,7 +189,7 @@ export const ProductCart = () => {
                             {
                                 productData.sizes.map((size, index) => (
                                     <div key={index}>
-                                        <input className='cart__radio' type="radio" name="size" id={`size${size}`}/>
+                                        <input className='cart__radio' type="radio" name="size" value={size} id={`size${size}`} onClick={(event) => setSize(event.target.value)}/>
                                         <label className="cart__size" htmlFor={`size${size}`}>{size}</label>
                                     </div>
                                     
@@ -155,7 +198,8 @@ export const ProductCart = () => {
                                 
                                 
                             </div>
-                            <button className="cart__basket">додати до корзини</button>
+                            { size === 'error' && <p className="error">Виберіть розмір</p> }
+                            <button className="cart__basket" onClick={addToCart}>додати до корзини</button>
                         </div>
                     </div>
                 </div>

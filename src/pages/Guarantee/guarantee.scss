@@ -39,3 +39,18 @@
         margin-bottom: 20px;
     }
 }
+
+@media screen and (max-width: 767px){
+    .guarantee{
+        &__date, &__contact{
+            display: block;
+            div{
+                width: 100%;                
+            }
+
+            div+div{
+                margin-top: 20px;
+            }
+        }
+    }
+}

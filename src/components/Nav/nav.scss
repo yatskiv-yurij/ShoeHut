@@ -34,4 +34,40 @@
         }
     }
 
+    &__open{
+        display: none;
+    }
+
+    label{
+        display: none;
+    }
+}
+@media screen and (max-width: 676px){
+    .menu{
+
+        &__wrapper{
+            flex-wrap: wrap;
+        }
+
+        &__list, &__user{
+            display: none;
+            width: 100%;
+            margin-top: 20px;
+            justify-content: center; 
+        }
+
+        label{
+            display: block;
+            svg{
+                width: 35px;
+                height: auto;
+            }
+        }
+
+        &__open{
+            &:checked ~ .menu__list, &:checked ~ .menu__user{
+                display: flex;
+            }
+        }
+    }
 }

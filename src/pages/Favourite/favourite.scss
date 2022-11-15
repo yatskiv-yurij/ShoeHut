@@ -50,4 +50,28 @@
         }
     }
 
+    &__empty{
+        height: 50vh;
+        position: relative;
+        div{
+            position: absolute;
+            top: 30%;
+            left: 0;
+            text-align: center; 
+            width: 100% 
+        }
+        
+        
+        &-text{
+            @include text(32px, 500, 35px);
+            color: $white;
+           
+        }
+    }
+
+    &__shop{
+        @include button();
+        width: 20%;
+    }
+
 }

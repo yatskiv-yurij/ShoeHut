@@ -14,9 +14,20 @@ export const ProductSlider = ({data}) => {
         <Swiper
             modules={[Navigation, Scrollbar]}
             spaceBetween={20}
-            slidesPerView={4}
+            slidesPerView={1}
             navigation
             scrollbar={{ draggable: true }}
+            breakpoints={{
+                676: {
+                    slidesPerView: 2,
+                },
+                991: {
+                    slidesPerView: 3,
+                },
+                1200: {
+                    slidesPerView: 4,
+                },
+            }}
         >
 
             {data && data.map((post, index) => (

@@ -5,9 +5,9 @@
     padding: 100px 0;
     &__all{
         display: flex;
-        justify-content: space-between;
+        justify-content: center;
         flex-wrap: wrap;
-        gap: 20px 0;
+        gap: 20px 20px;
         margin-top: 50px;
     }
 
@@ -48,10 +48,18 @@
         margin-top: 25px;
     }
 
-    &__apply{
+    &__apply, &__delete{
         @include button();
         width: 20%;
         padding: 10px 0;
+    }
+
+    &__delete{
+        background-color: $red;
+
+        &:hover{
+            background-color: darken($red,5%);
+        }
     }
     &__search{
         width: 30%;
@@ -83,9 +91,82 @@
             transform: translateY(-50%);
             font-size: 18px;
         }
-    }
-    
+    } 
+}
 
-    
+@media screen and (max-width: 1200px){
+    .goods{
+        .product{
+            width: 23%;
+        }
+    } 
+}
+
+@media screen and (max-width: 991px){
+    .filter{
+        &__top{
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px 20px;
+            select{
+                width: 30%;
+            }
+        }
+
+        &__bottom{
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px 20px;
+        }
+
+        &__apply, &__delete{
+            width: 40%;
+            padding: 5px 10px;
+        }
+
+        &__search{
+            width: 50%;
+            margin-top: 20px;
+        }
+    }
+    .goods{
+        .product{
+            width: 30%;
+        }
+    } 
+
+}
+
+@media screen and (max-width: 676px){
+    .goods{
+        .product{
+            width: 40%;
+        }
+    } 
+}
+@media screen and (max-width: 550px){
+    .filter{
+        &__top{
+            select{
+                width: 40%;
+            }
+        }
+
+        &__search{
+            width: 80%;
+        }
+    } 
+    .goods{
+        .product{
+            width: 45%;
+        }
+    } 
+}
+@media screen and (max-width: 450px){
+    .goods{
+        .product{
+            width: 75%;
+        }
+    }
 }
 

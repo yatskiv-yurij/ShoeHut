@@ -94,3 +94,15 @@
         @include text(16px, 400, 27px);
     }
 }
+
+@media screen and (max-width: 676px){
+    .footer{
+        &__wrapper{
+            flex-wrap: wrap;
+        }
+
+        &__data{
+            width: 50%;
+        }
+    }
+}

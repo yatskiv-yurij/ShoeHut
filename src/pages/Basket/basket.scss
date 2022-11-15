@@ -12,7 +12,7 @@
     }
 
     &__products{
-        width: 65%;
+        width: 60%;
     }
 
     &__product{
@@ -28,7 +28,7 @@
     }
 
     &__sum{
-        width: 25%;
+        width: 30%;
         padding: 20px;
         background-color: $light-green;
         border-radius: 10px;
@@ -82,4 +82,51 @@
         }
     }
 
+    &__empty{
+        height: 50vh;
+        position: relative;
+        div{
+            position: absolute;
+            top: 30%;
+            left: 0;
+            text-align: center; 
+            width: 100% 
+        }
+        
+        
+        &-text{
+            @include text(32px, 500, 35px);
+            color: $white;
+           
+        }
+    }
+
+    &__shop{
+        @include button();
+        width: 20%;
+    }
+
+}
+
+@media screen and (max-width: 991px){
+    .basket{
+        .basket__wrapper{
+            display: block;
+        }
+        &__products{
+            width: 100%;
+        }
+        &__sum{
+            margin: 40px auto 0;
+            width: 40%;
+        }
+    }
+}
+
+@media screen and (max-width: 767px){
+    .basket{
+        &__sum{
+            width: 70%;
+        }
+    }
 }

@@ -60,15 +60,22 @@ body{
     .swiper{
         position: static;
 
+        &-wrapper{
+            display: flex;
+            align-items: stretch;
+        }
+
         &-slide{
             background-color: #fff;
             display: block;
             border-radius: 10px;
+            height: auto !important;
             Link{
                 display:flex !important;
             }
         
             .product{
+                height: 100%;
                 &__img{
                     width: 100%;
                 }
@@ -157,6 +164,8 @@ body{
             }
         }
     }
+
+    
 }
 
 .error{
@@ -164,4 +173,53 @@ body{
     margin: 5px 0 0 5px;
     text-align: left;
     @include text(14px, 400, 25px);
+}
+
+
+@media screen and (max-width: 991px){
+    .header{
+        &__text{
+            @include text(24px, 400, 40px);
+        }
+
+        &__shop{
+            width: 75%;
+        }
+    }
+}
+
+@media screen and (max-width: 676px){
+    .header{
+        position: relative;
+        background: linear-gradient(rgba(59,65,60,1) 50%, rgba(148,209,190,1) 50%);
+
+        &__wrapper{
+            
+            height: auto;
+            color: $white;
+            display: block;
+        }
+
+        &__content{
+            padding: 100px 0;
+            width: 100%;
+            text-align: center;
+        }
+
+        &__img{
+            position: static;
+            width: 80%;
+            height: auto;
+            margin: 50px 0;
+        }
+
+        &__text{
+            @include text(22px, 400, 40px);
+            margin: 25px 0;
+        }
+
+        &__shop{
+            width: 100%;
+        }
+    }
 }

@@ -422,6 +422,15 @@
         &__photos{
             width: 100%;
         }
+
+        .swiper{
+            &-button{ 
+                &-prev, &-next{
+                    width: 40px;
+                    height: 40px;
+                }
+            }
+        }
     }
     .detail{
         &__item{
@@ -442,6 +451,39 @@
             .swiper{
                 height: 300px;
             }
+        }
+    }
+}
+
+@media screen and (max-width: 450px){
+    .cart{
+        &__vertical-photos{
+            display: none;
+        }
+
+        &__main-photo{
+            width: 100%;
+            margin-left: 0;
+        }
+    }
+
+    .review{
+        &__new-open{
+            font-size: 14px;
+            width: 50%;
+        }
+
+        &__user-name{
+            font-size: 20px;
+        }
+
+        &__text{
+            font-size: 16px;
+        }
+
+        &__date{
+            font-size: 14px;
+            margin-top: 0;
         }
     }
 }

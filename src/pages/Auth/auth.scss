@@ -102,5 +102,77 @@
             color: $black;
         }
     }
-    
+}
+
+@media screen and (max-width: 900px){
+    .auth{
+        .login, .registration{
+            padding: 0 20px;
+
+            &__next, &__open{
+                font-size: 18px;
+            }
+
+            &__open{
+                margin-top: 20px;
+            }
+
+            &__item{
+                margin-top: 30px;
+
+                label{
+                    font-size: 16px;
+                }
+            }
+
+            &__item-flex{
+                display: block;
+                
+                div{
+                    width: 100%;
+
+                    & + div {
+                        margin-top: 30px;
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 760px){
+    .header{
+        background: rgb(148, 209, 190);
+    }
+
+    .auth{
+        .login, .registration{
+            width: 75%;
+            margin: 0 auto;
+            padding: 50px 0;
+
+            &__next, &__open{
+                font-size: 16px;
+                width: 50%;
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 520px){
+    .auth{
+        .login, .registration{
+            &__next, &__open{
+                width: 75%;
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 420px){
+    .auth{
+        .login, .registration{
+            width: 90%;
+        }
+    }
 }

@@ -30,7 +30,7 @@ export const ProductMin = ({data, number, size, counter, price, setPrice, produc
                     <Link className="product__name title2" to={`/shop/${data._id}`}>{data.title}</Link>
                     <p className="product__brand">{data.brand}</p>
                     {size && <p className="product__size">Розмір: {size}</p>}
-                    {number && <p className="product__size">Кількість: {number}</p>}
+                    {number && <p className="product__count">Кількість: {number}</p>}
                     {counter && <div className="count">
                         <button className="minus" onClick={minusCount}>
                             <svg width="14" height="2" viewBox="0 0 14 2" fill="none" xmlns="http://www.w3.org/2000/svg">

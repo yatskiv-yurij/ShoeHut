@@ -163,9 +163,38 @@
     } 
 }
 @media screen and (max-width: 450px){
+    .filter{
+        &__top{
+            select{
+                width: 45%;
+            }
+        }
+        
+        &__sort{
+            width: 95% !important;
+        }
+
+        &__bottom{
+            display: block;
+            text-align: center;
+        }
+
+        &__apply{
+            width: 75%;
+        }
+
+        &__delete{
+            display: block;
+            margin: 20px auto 0;
+        }
+
+        &__search{
+            width: 100%;
+        }
+    } 
     .goods{
         .product{
-            width: 75%;
+            width: 90%;
         }
     }
 }

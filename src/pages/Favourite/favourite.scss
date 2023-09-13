@@ -73,5 +73,37 @@
         @include button();
         width: 20%;
     }
+}
 
+@media screen and (max-width: 900px){
+    .favourite{
+        &__shop{
+            width: 40%;
+        }
+    }
+}
+
+@media screen and (max-width: 768px){
+    .favourite{
+        padding: 50px 0;
+        .product__img{
+            width: 120px;
+        }
+
+        &__empty-text{
+            font-size: 26px;
+        }
+
+        &__shop{
+            font-size: 18px;
+        }
+    }
+}
+
+@media screen and (max-width: 500px){
+    .favourite{
+        &__shop{
+            width: 80%;
+        }
+    }
 }

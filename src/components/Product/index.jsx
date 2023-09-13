@@ -10,7 +10,7 @@ export const Product = ({edit, data}) => {
         const favourites = JSON.parse(window.localStorage.getItem('favourite'));
         
          if(favourites){
-            const index = favourites.findIndex(fav => fav ===data._id);
+            const index = favourites.findIndex(fav => fav === data._id);
             if(index >= 0){
                 setFavourite(true);
             }

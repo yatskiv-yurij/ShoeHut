@@ -16,7 +16,7 @@
         margin-left: 30px;
     }
 
-    &__brand, &__size{
+    &__brand, &__size, &__count{
         @include simpleText();
         margin-top: 5px;
     }
@@ -63,4 +63,27 @@
 .add{
     border-radius: 0 10px 10px 0;
     cursor: pointer;
+}
+
+@media screen and (max-width: 768px){
+    .product{
+        &__img-small{
+            width: 130px;
+        }
+        &__name, &__price{
+            font-size: 20px;
+        }
+
+        &__brand, &__size, &__count{
+            font-size: 16px;
+        }
+    }
+}
+
+@media screen and (max-width: 678px){
+    .product{
+        &__info{
+            margin-left: 10px;
+        }
+    }
 }

@@ -133,6 +133,12 @@
         .product{
             width: 75%;
         }
-    } 
+    }
+    
+    .sale{
+        &__wrapper{
+            width: 100%;
+        }
+    }
 }
 

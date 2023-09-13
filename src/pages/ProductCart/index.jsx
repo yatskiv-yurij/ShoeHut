@@ -274,7 +274,7 @@ export const ProductCart = () => {
                             
                         </div>
                         <p className="error"><ErrorMessage errors={errors} name="rating" /></p> 
-                        <textarea className="review__content"  id="reviewContent"  rows="10" placeholder='Введіть відгук' {...register('data', {required: 'Надайте відгук'})}></textarea>
+                        <textarea className="review__content" id="reviewContent"  rows="10" placeholder='Введіть відгук' {...register('data', {required: 'Надайте відгук'})}></textarea>
                         <p className="error"><ErrorMessage errors={errors} name="review"/></p> 
                         <button type="submit" className="review__save">Опублікувати</button>
                         <button type="button" className="review__close" onClick={() => setReview(false)}>

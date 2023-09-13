@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useSelector } from "react-redux";
 
@@ -7,9 +7,34 @@ import header_img from '../../image/header-main.png';
 import { Nav, Footer, Product, ProductSlider} from '../../components/';
 
 export const Home = () => {
+    const [count, setCount] = useState(10);
+
     useEffect(() => {
         window.scrollTo(0, 0);
     });
+
+    useEffect(() => {
+        const handleWindowResize = () => {
+            let width = window.innerWidth;
+            if(width < 675){
+                setCount(10)
+            }
+            if(width > 675 && width < 990){
+                setCount(9)
+            }
+            if(width > 990){
+                setCount(8)
+            }
+            if(width > 1200){
+                setCount(10)
+            }
+        };
+    
+        window.addEventListener('resize', handleWindowResize);
+        
+
+    }, [])
+
     const{ posts } = useSelector(state => state.post)
     const popular = posts.data;
     const sale = posts.data && posts.data.filter((post) => {
@@ -38,7 +63,7 @@ export const Home = () => {
                 <div className="container">
                     <h3 className="popular__title title2">Популярні</h3>
                     <div className="popular__products">
-                        { popular && [...popular].sort((post, nextpost) => nextpost.popular - post.popular).slice(0,10).map((post, index) => (
+                        { popular && [...popular].sort((post, nextpost) => nextpost.popular - post.popular).slice(0, count).map((post, index) => (
                             <Product key={index} edit={false} data={post}/>
                         ))} 
                     </div>  

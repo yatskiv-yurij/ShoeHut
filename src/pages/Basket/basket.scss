@@ -39,7 +39,7 @@
         justify-content: space-between;
         align-items: center;
         @include simpleText();
-        margin-bottom: 30px;
+        margin-bottom: 15px;
         p{
             margin: 0;
         }
@@ -52,7 +52,7 @@
     &__pay{
         @include button();
         width: 100%;
-        margin-top: 50px;
+        margin-top: 30px;
     }
 
     &__delete{
@@ -108,7 +108,23 @@
 
 }
 
-@media screen and (max-width: 991px){
+@media screen and (max-width: 1000px){
+    .basket{
+        &__sum{
+            width: 35%;
+        }
+    }
+}
+
+@media screen and (max-width: 900px){
+    .basket{
+        &__shop{
+            width: 40%;
+        }
+    }
+}
+
+@media screen and (max-width: 850px){
     .basket{
         .basket__wrapper{
             display: block;
@@ -118,15 +134,51 @@
         }
         &__sum{
             margin: 40px auto 0;
-            width: 40%;
+            width: 50%;
+        }
+    }
+}
+@media screen and (max-width: 768px){
+    .basket{
+        padding: 50px 0;
+
+        &__empty-text{
+            font-size: 26px;
+        }
+
+        &__shop{
+            font-size: 18px;
         }
     }
 }
 
-@media screen and (max-width: 767px){
+@media screen and (max-width: 600px){
     .basket{
+        padding: 50px 0;
+        
         &__sum{
-            width: 70%;
+            width: 75%;
         }
     }
 }
+
+@media screen and (max-width: 500px){
+    .basket{
+        &__shop{
+            width: 80%;
+        }
+    }
+}
+
+@media screen and (max-width: 400px){
+    .basket{
+        &__sum{
+            width: 100%;
+        }
+    }
+}
+
+
+
+
+
